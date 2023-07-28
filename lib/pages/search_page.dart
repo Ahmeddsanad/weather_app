@@ -23,14 +23,23 @@ class SearchPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextFormField(
+            TextField(
               decoration: InputDecoration(
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 18.0,
+                  horizontal: 18.0,
+                ),
+                hintText: 'Enter a city',
+                labelText: 'Search',
+                suffix: const Icon(
+                  Icons.search_rounded,
+                  size: 16.0,
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(
-                    8.0,
+                    12.0,
                   ),
                 ),
-                label: Text('Search'),
               ),
             ),
           ],
@@ -39,3 +48,14 @@ class SearchPage extends StatelessWidget {
     );
   }
 }
+
+// Widget TextFormFieldByMe() => TextFormField(
+//       decoration: InputDecoration(
+//         border: OutlineInputBorder(
+//           borderRadius: BorderRadius.circular(
+//             8.0,
+//           ),
+//         ),
+//         label: Text('Search'),
+//       ),
+//     );
