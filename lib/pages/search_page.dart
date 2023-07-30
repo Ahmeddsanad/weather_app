@@ -45,13 +45,8 @@ class SearchPage extends StatelessWidget {
               //   print(value);
               // },
 
-              onSubmitted: (value) async {
-                await Future.delayed(const Duration(seconds: 5), () {
-                  print(
-                      'delayed 5 seconds'); //used in splash screen Future.delayed
-                });
+              onSubmitted: (value) {
                 print(value);
-                // CityName = value;
               },
             ),
           ],
@@ -71,3 +66,13 @@ class SearchPage extends StatelessWidget {
 //         label: Text('Search'),
 //       ),
 //     );
+
+
+// onSubmitted: (value) async {
+//                 await Future.delayed(const Duration(seconds: 5), () {
+//                   print(
+//                       'delayed 5 seconds'); //used in splash screen Future.delayed
+//                 });
+//                 print(value);
+//                 // CityName = value;
+//               },
