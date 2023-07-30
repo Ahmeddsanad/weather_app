@@ -15,14 +15,14 @@ class HomePage extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.search_rounded,
             ),
             onPressed: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const SearchPage(),
+                    builder: (context) => SearchPage(),
                   ));
             },
           ),

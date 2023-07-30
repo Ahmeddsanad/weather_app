@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatelessWidget {
-  const SearchPage({super.key});
-
+  String? CityName;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,8 +11,9 @@ class SearchPage extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back_rounded),
+          icon: const Icon(Icons.arrow_back_rounded),
         ),
+        elevation: 0.0,
         title: const Text(
           'Search a city',
         ),
@@ -41,6 +41,14 @@ class SearchPage extends StatelessWidget {
                   ),
                 ),
               ),
+              // onChanged: (value) {
+              //   print(value);
+              // },
+
+              onSubmitted: (value) {
+                print(value);
+                CityName = value;
+              },
             ),
           ],
         ),
