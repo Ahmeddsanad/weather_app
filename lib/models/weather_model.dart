@@ -1,11 +1,11 @@
 // ignore_for_file: non_constant_identifier_names
 
 class WeatherModel {
-  String? date;
-  double? temp;
-  double? maxTemp;
-  double? minTemp;
-  String? WeatherStateName;
+  String date;
+  double temp;
+  double maxTemp;
+  double minTemp;
+  String WeatherStateName;
 
   WeatherModel({
     required this.date,
@@ -15,13 +15,27 @@ class WeatherModel {
     required this.WeatherStateName,
   });
 
-  WeatherModel.fromJson(dynamic Data) {
-    var JsonData = Data['forecast']['forecastday'][0]['day'];
+  factory WeatherModel.fromJson(dynamic Data) {
+    var JsonData = Data['forecast']['forecastday'][0];
 
-    date = Data['location']['localtime'];
-    WeatherStateName = JsonData['condition']['text'];
-    maxTemp = JsonData['maxtemp_c'];
-    minTemp = JsonData['mintemp_c'];
-    temp = JsonData['avgtemp_c'];
+    return WeatherModel(
+      WeatherStateName: JsonData['condition']['text'],
+      date: Data['location']['localtime'],
+      maxTemp: JsonData['maxtemp_c'],
+      minTemp: JsonData['mintemp_c'],
+      temp: JsonData['avgtemp_c'],
+    );
   }
 }
+
+
+    // date = Data['location']['localtime'];
+    // WeatherStateName = JsonData['condition']['text'];
+    // maxTemp = JsonData['maxtemp_c'];
+    // minTemp = JsonData['mintemp_c'];
+    // temp = JsonData['avgtemp_c'];
+
+
+// we used factory
+// due to remove nullable signs '?' from variables 
+// that could make a errors in future.
