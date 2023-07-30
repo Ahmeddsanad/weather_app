@@ -14,6 +14,16 @@ class WeatherService {
     http.Response response = await http.get(url);
 
     Map<dynamic, dynamic> JsonData = jsonDecode(response.body);
-    print(JsonData);
+    // print(JsonData);
+
+    String date = JsonData['location']['localtime'];
+
+    String Icon = JsonData['current']['condition']
+        ['https://cdn.weatherapi.com/weather/64x64/day/122.png'];
+
+    // when we accessing a list '[ ]' We use [0] [1] ... [inf.]
+    // when we accessing a map ['String from Json']
+
+    String temp = JsonData['forecast']['forecastday'][0]['day']['avgtemp_c'];
   }
 }
