@@ -1,11 +1,11 @@
 // ignore_for_file: non_constant_identifier_names
 
 class WeatherModel {
-  final String date;
-  final double temp;
-  final double maxTemp;
-  final double minTemp;
-  final String WeatherStateName;
+  String? date;
+  double? temp;
+  double? maxTemp;
+  double? minTemp;
+  String? WeatherStateName;
 
   WeatherModel({
     required this.date,
@@ -14,4 +14,14 @@ class WeatherModel {
     required this.minTemp,
     required this.WeatherStateName,
   });
+
+  WeatherModel.fromJson(dynamic Data) {
+    var JsonData = Data['forecast']['forecastday'][0]['day'];
+
+    date = Data['location']['localtime'];
+    WeatherStateName = JsonData['condition']['text'];
+    maxTemp = JsonData['maxtemp_c'];
+    minTemp = JsonData['mintemp_c'];
+    temp = JsonData['avgtemp_c'];
+  }
 }

@@ -15,18 +15,11 @@ class WeatherService {
 
     http.Response response = await http.get(url);
 
-    Map<dynamic, dynamic> JsonData = jsonDecode(response.body);
+    Map<dynamic, dynamic> Data = jsonDecode(response.body);
 
-    var ListNumOne = JsonData['forecast']['forecastday'][0]['day'];
+    print(Data);
 
-    WeatherModel weather = WeatherModel(
-      date: JsonData['location']['localtime'],
-      WeatherStateName: ListNumOne['condition']['text'],
-      maxTemp: ListNumOne['maxtemp_c'],
-      minTemp: ListNumOne['mintemp_c'],
-      temp: ListNumOne['avgtemp_c'],
-    );
-
+    WeatherModel weather = WeatherModel.fromJson(Data);
     return weather;
   }
 }
