@@ -45,9 +45,13 @@ class SearchPage extends StatelessWidget {
               //   print(value);
               // },
 
-              onSubmitted: (value) {
+              onSubmitted: (value) async {
+                await Future.delayed(const Duration(seconds: 5), () {
+                  print(
+                      'delayed 5 seconds'); //used in splash screen Future.delayed
+                });
                 print(value);
-                CityName = value;
+                // CityName = value;
               },
             ),
           ],
