@@ -5,8 +5,6 @@ import 'package:weather_app/pages/search_page.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
-  WeatherModel? WeatherData;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +29,7 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        body: WeatherData != null
+        body: weatherData == null
             ? const Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
