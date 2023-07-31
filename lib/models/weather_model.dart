@@ -17,7 +17,7 @@ class WeatherModel {
 
   factory WeatherModel.fromJson(dynamic Data) {
     var JsonData = Data['forecast']['forecastday'][0]['day'];
-    // print(JsonData);
+    print(Data);
     return WeatherModel(
       WeatherStateName: JsonData['condition']['text'],
       date: Data['location']['localtime'],
@@ -41,6 +41,6 @@ class WeatherModel {
     // temp = JsonData['avgtemp_c'];
 
 
-// we used factory
-// due to remove nullable signs '?' from variables 
-// that could make a errors in future.
+    // we used factory
+    // due to remove nullable signs '?' from variables 
+    // that could make a errors in future.
