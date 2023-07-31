@@ -3,7 +3,10 @@ import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/services/weather_service.dart';
 
 class SearchPage extends StatelessWidget {
+  SearchPage({this.UpdateUI});
+
   String? CityName;
+  VoidCallback? UpdateUI;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +59,7 @@ class SearchPage extends StatelessWidget {
                   CityName: CityName!,
                 );
                 weatherData = weather;
+                UpdateUI!();
                 Navigator.pop(context);
                 // print(weather);
               },

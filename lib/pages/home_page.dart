@@ -2,8 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/pages/search_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  void UpdateUI() {
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +32,9 @@ class HomePage extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SearchPage(),
+                      builder: (context) => SearchPage(
+                        UpdateUI: UpdateUI,
+                      ),
                     ));
               },
             ),
