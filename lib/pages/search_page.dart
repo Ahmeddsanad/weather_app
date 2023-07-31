@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:weather_app/models/weather_model.dart';
+import 'package:weather_app/providers/weather_provider.dart';
 import 'package:weather_app/services/weather_service.dart';
 
 class SearchPage extends StatelessWidget {
@@ -58,8 +60,8 @@ class SearchPage extends StatelessWidget {
                 WeatherModel weather = await service.getWeather(
                   CityName: CityName!,
                 );
-                weatherData = weather;
-                UpdateUI!();
+                Provider.of<WeatherProvider>(context, listen: false)
+                    .WeatherData = weather;
                 Navigator.pop(context);
                 // print(weather);
               },
@@ -71,7 +73,7 @@ class SearchPage extends StatelessWidget {
   }
 }
 
-WeatherModel? weatherData;
+// WeatherModel? weatherData;
 // من عيوبه ان انا لو مثلا عايز 
 // passing data from screen to screen to screen to screen to .....
 // ف انا هحتاج اباصي الداتا من سكرين ل تانيه وهكذا ودا طبعا مش احسن حاجة
