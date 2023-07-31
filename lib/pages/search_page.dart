@@ -55,8 +55,9 @@ class SearchPage extends StatelessWidget {
                 WeatherModel weather = await service.getWeather(
                   CityName: CityName!,
                 );
-
-                print(weather);
+                weatherData = weather;
+                Navigator.pop(context);
+                // print(weather);
               },
             ),
           ],
@@ -66,6 +67,7 @@ class SearchPage extends StatelessWidget {
   }
 }
 
+WeatherModel? weatherData;
 // Widget TextFormFieldByMe() => TextFormField(
 //       decoration: InputDecoration(
 //         border: OutlineInputBorder(
