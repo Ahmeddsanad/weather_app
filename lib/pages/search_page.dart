@@ -37,9 +37,21 @@ class SearchPage extends StatelessWidget {
                 ),
                 hintText: 'Enter a city',
                 labelText: 'Search',
-                suffix: const Icon(
-                  Icons.search_rounded,
-                  size: 16.0,
+                suffix: GestureDetector(
+                  onTap: () async {
+                    WeatherService service = WeatherService();
+
+                    WeatherModel? weather = await service.getWeather(
+                      CityName: CityName!,
+                    );
+                    Provider.of<WeatherProvider>(context, listen: false)
+                        .WeatherData = weather;
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(
+                    Icons.search_rounded,
+                    size: 16.0,
+                  ),
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(
@@ -50,13 +62,15 @@ class SearchPage extends StatelessWidget {
               // onChanged: (value) {
               //   print(value);
               // },
-
+              onChanged: (value) {
+                CityName = value;
+              },
               onSubmitted: (value) async {
                 CityName = value;
 
                 WeatherService service = WeatherService();
 
-                WeatherModel weather = await service.getWeather(
+                WeatherModel? weather = await service.getWeather(
                   CityName: CityName!,
                 );
                 Provider.of<WeatherProvider>(context, listen: false)

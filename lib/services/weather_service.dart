@@ -9,17 +9,23 @@ class WeatherService {
   String BaseURL = 'http://api.weatherapi.com/v1';
   String APIKey = 'ca261ea9d4f14a78a9285745232807';
 
-  Future<WeatherModel> getWeather({required String CityName}) async {
-    Uri url =
-        Uri.parse('$BaseURL/forecast.json?key=$APIKey&q=$CityName&days=7');
+  Future<WeatherModel?> getWeather({required String CityName}) async {
+    WeatherModel? weather;
 
-    http.Response response = await http.get(url);
+    try {
+      Uri url =
+          Uri.parse('$BaseURL/forecast.json?key=$APIKey&q=$CityName&days=7');
 
-    Map<dynamic, dynamic> Data = jsonDecode(response.body);
+      http.Response response = await http.get(url);
 
-    // print(Data);
+      Map<dynamic, dynamic> Data = jsonDecode(response.body);
 
-    WeatherModel weather = WeatherModel.fromJson(Data);
+      // print(Data);
+
+      weather = WeatherModel.fromJson(Data);
+    } catch (e) {
+      print(e);
+    }
     return weather;
   }
 }
