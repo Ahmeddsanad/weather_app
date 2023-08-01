@@ -141,3 +141,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+
+// MaterialColor contain a list of colors 
+// whereis the color contain one value of color
